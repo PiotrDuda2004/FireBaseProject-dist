@@ -1,0 +1,32 @@
+<label>Server Name</label>
+<br>
+<button
+  class="btn btn-primary"
+  (click) = "showSecretContent()">
+  Show me
+</button>
+<p [ngStyle]="{visibility: this.clicked}"> Secret password = okoń</p>
+<p *ngFor="let i of logs" [ngStyle]="{backgroundColor: checkItem()}"  >{{"Checked "+ i + " times"}}</p>
+<hr>
+<!--<input-->
+  <!--type="text"-->
+  <!--class="form-control"-->
+  <!--(input)="onUpdateServerName($event)">-->
+<input
+  type="text"
+  class="form-control"
+  [(ngModel)]="serverName">
+<!--<p>{{ serverName }}</p>-->
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onCreateServer()">Add Server</button>
+<p *ngIf="serverCreated" else noServer> Server was created, server name is {{ serverName }}</p>
+<ng-template #noServer>
+   <p>{{ serverCreationStatus }</p>
+  }</ng-template>
+<!--<p [innerText]="allowNewServer"></p>-->
+<p>{{ serverCreationStatus }}</p>
+<app-server *ngFor="let i of servers"></app-server>
+
+

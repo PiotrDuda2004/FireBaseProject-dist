@@ -1,0 +1,76 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  // selector: '[app-servers]',
+  // selector: '.app-servers',
+  selector: 'app-servers',
+  // template: `
+  //   <app-server></app-server>
+  //   <app-server></app-server>`,
+  templateUrl: './servers.component.html',
+  styleUrls: ['./servers.component.css']
+})
+export class ServersComponent implements OnInit {
+  allowNewServer = false;
+  serverCreationStatus = 'No server was created!';
+  serverName = 'Testserver';
+  serverCreated = false;
+  servers = ['Testserver', 'TestServer 2'];
+  clicked = "hidden";
+  logs = ["1"];
+  number = 1;
+
+
+  constructor() {
+    setTimeout(() => {
+      this.allowNewServer = true;
+    }, 2000);
+  }
+
+  ngOnInit() {
+    
+  }
+
+  showSecretContent(){
+    this.number = this.number +1
+    this.logs.push((this.number.toString()))
+
+
+    if(this.clicked === "hidden"){
+      return this.clicked = "visible"}
+    else if(this.clicked === "visible"){
+      return this.clicked = "hidden"}
+    else{
+      return 0
+    }
+
+    
+    
+
+  }
+  checkItem(){
+    if(this.logs.length >=5){
+      return "blue"
+    }
+    else{
+     return "white"}}
+
+  checkItemTwo(){
+      if(this.logs.length >=5){
+        return "black"
+      }
+      else{
+        return "white"
+      }
+       
+  }
+  onCreateServer() {
+    this.serverCreated = true
+    this.servers.push(this.serverName);
+    this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
+  }
+
+  onUpdateServerName(event: Event) {
+    this.serverName = (<HTMLInputElement>event.target).value;
+  }
+}

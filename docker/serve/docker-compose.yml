@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  rqr-front-local:
+    image: rfr-front:dev
+    build:
+      dockerfile: ./docker/serve/Dockerfile
+      context: ./../..
+    container_name: rfr-front
+    init: true
+    volumes:
+      - ../..:/app
+    ports:
+      - 3002:4200
+      

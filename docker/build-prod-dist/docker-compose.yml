@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  rqr-front-build:
+    image: rfr-build
+    build:
+      dockerfile: ./docker/build-prod-dist/Dockerfile
+      context: ./../..
+    container_name: rfr-build
+    init: true
+    volumes:
+      - ../..:/app
+    ports:
+      - 3004:4200
+      

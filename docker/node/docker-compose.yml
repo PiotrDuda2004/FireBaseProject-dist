@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  rqr-node-cmd:
+    image: rfr-node-cmd:dev
+    build:
+      dockerfile: ./docker/node/Dockerfile
+      context: ./../..
+    container_name: rfr-node-cmd
+    init: true
+    volumes:
+      - ../..:/work
+    ports:
+      - 3003:4200
+      
+
